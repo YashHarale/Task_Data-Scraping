@@ -1,19 +1,28 @@
 import requests
-import certifi
+from bs4 import BeautifulSoup
 
 url = 'https://hprera.nic.in/PublicDashboard'
 try:
     response = requests.get(url, verify='combined_cert_chain.pem')
-    print(response.content)
 except requests.exceptions.SSLError as e:
     print("SSL Error:", e)
 
-# soup = BeautifulSoup(response.text, 'html.parser')
+soup = BeautifulSoup(response.text, 'html.parser')
 
-# print(response.text)
+# Extract information from the modal content
+modal_content = soup.find('div', {'id': 'modal-data-preview-content'})
+print(modal_content)
 
-# registered_projects = soup.find_all('div', class_='your-registered-projects-class')
+# if modal_content:
+#     # Assuming the modal content has details like name, PAN number, etc.
+#     name = modal_content.find('span', {'id': 'modal-name-id'}).text.strip()
+#     pan_no = modal_content.find('span', {'id': 'modal-pan-id'}).text.strip()
+#     # Add more fields as needed
 
-# # Assuming that the RERA numbers are links that take you to the detail page
-# projects = registered_projects.find_all('a', href=True)[:6]
-
+#     # Print or process the extracted data
+#     print(f"Name: {name}")
+#     print(f"PAN No: {pan_no}")
+#     # Print or process other fields
+    
+# else:
+#     print("Modal content not found or request failed.")
