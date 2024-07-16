@@ -3,7 +3,7 @@ import certifi
 
 url = 'https://hprera.nic.in/PublicDashboard'
 try:
-    response = requests.get(url, verify='ISRG Root X1.crt')
+    response = requests.get(url, verify='combined_cert_chain.pem')
     print(response.content)
 except requests.exceptions.SSLError as e:
     print("SSL Error:", e)
