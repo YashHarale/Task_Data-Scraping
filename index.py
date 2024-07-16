@@ -1,1 +1,2 @@
-print("Hello to the world of scraping")
+import requests
+from bs4 import BeautifulSoup
