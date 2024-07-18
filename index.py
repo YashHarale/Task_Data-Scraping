@@ -13,16 +13,14 @@ soup = BeautifulSoup(response.text, 'html.parser')
 modal_content = soup.find('div', {'id': 'modal-data-preview-content'})
 print(modal_content)
 
-# if modal_content:
-#     # Assuming the modal content has details like name, PAN number, etc.
-#     name = modal_content.find('span', {'id': 'modal-name-id'}).text.strip()
-#     pan_no = modal_content.find('span', {'id': 'modal-pan-id'}).text.strip()
-#     # Add more fields as needed
 
-#     # Print or process the extracted data
-#     print(f"Name: {name}")
-#     print(f"PAN No: {pan_no}")
-#     # Print or process other fields
+name = modal_content.find('span', {'id': 'modal-name-id'}).text.strip()
+ pan_no = modal_content.find('span', {'id': 'modal-pan-id'}).text.strip()
+
+
+print(f"Name: {name}")
+ print(f"PAN No: {pan_no}")
+
     
-# else:
-#     print("Modal content not found or request failed.")
+else:
+print("Modal content not found or request failed.")
