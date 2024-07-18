@@ -9,18 +9,16 @@ except requests.exceptions.SSLError as e:
 
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# Extract information from the modal content
 modal_content = soup.find('div', {'id': 'modal-data-preview-content'})
 print(modal_content)
 
-
 name = modal_content.find('span', {'id': 'modal-name-id'}).text.strip()
  pan_no = modal_content.find('span', {'id': 'modal-pan-id'}).text.strip()
-
+gstIn = modal_content.find('span', {'id': 'modal-gst-in'}).text.strip()
 
 print(f"Name: {name}")
  print(f"PAN No: {pan_no}")
-
+print(f"GSTIN: {gstIn}") 
     
 else:
 print("Modal content not found or request failed.")
